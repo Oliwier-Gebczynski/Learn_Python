@@ -1,10 +1,25 @@
 import pickle
+import os
+
+# login dict
+if os.stat("database.txt").st_size == 0:
+    with open("database.txt", "wb") as database:
+        login_input = {
+            1: ["test"],
+            2: ["test"]
+        }
+        pickle.dump(login_input, database)
+        database.close()
 
 print("Hello in basic login system!")
 
 data_in = open("database.txt", "rb")
 login_data = pickle.load(data_in)
 data_in.close()
+
+print("1.Login")
+print("2.Registration")
+menu = input("Choose [1/2]: ")
 
 
 def login_function():
@@ -37,7 +52,6 @@ def registration_function():
 
         if new_password == repeat_password:
             data_out = open("database.txt", "wb")
-            pickle.dump(login_data, data_out)
 
             user_data = login_data[1]
             password_data = login_data[2]
@@ -45,29 +59,15 @@ def registration_function():
             user_data.append(new_user)
             password_data.append(new_password)
 
+            pickle.dump(login_data, data_out)
             data_out.close()
-        else: 
+        else:
             print("Password dont match ")
 
 
-
-
-            
-
-        # login dict
-        # login_input = {
-        #  1: ["oliwier", "karol", "kuba"],
-        #  2: ["qwerty", "haslo", "maslo"]
-        # }
-
-        # add new users
-        #data_out = open("database.txt", "wb")
-        #pickle.dump(login_input, data_out)
-        # data_out.close()
-
-        # read data from .txt
-#data_in = open("database.txt", "rb")
-#login_data = pickle.load(data_in)
-#data_in.close()
-
-registration_function()
+if menu == "1":
+    login_function()
+elif menu == "2":
+    registration_function()
+else:
+    print("Wrong option")
