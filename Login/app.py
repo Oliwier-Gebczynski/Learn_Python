@@ -13,13 +13,18 @@ if os.stat("database.txt").st_size == 0:
 
 print("Hello in basic login system!")
 
+# load data
 data_in = open("database.txt", "rb")
 login_data = pickle.load(data_in)
 data_in.close()
 
+# choose option
 print("1.Login")
 print("2.Registration")
 menu = input("Choose [1/2]: ")
+
+while menu != "1" and menu != "2":
+    menu = input("Wrong option! Choose [1/2]: ")
 
 
 def login_function():
@@ -40,16 +45,22 @@ def login_function():
 
 
 def registration_function():
-
+    # input new login
     new_user = input("Your login: ")
     user = login_data[1]
 
+    # checking the availability of the login
     if new_user in user:
         print("This login is taken")
     else:
         new_password = input("Your new password: ")
         repeat_password = input("Repeat password: ")
 
+        while new_password != repeat_password:
+            repeat_password = input(
+                "Password dont match! Repeat password: ")
+
+        # save new user
         if new_password == repeat_password:
             data_out = open("database.txt", "wb")
 
@@ -61,13 +72,12 @@ def registration_function():
 
             pickle.dump(login_data, data_out)
             data_out.close()
-        else:
-            print("Password dont match ")
+
+            print("Account created!")
 
 
+# function call
 if menu == "1":
     login_function()
 elif menu == "2":
     registration_function()
-else:
-    print("Wrong option")
