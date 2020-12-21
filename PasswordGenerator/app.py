@@ -8,6 +8,12 @@ special_signs = ["!", "@", "#", "$", "%", "&", "*", "?"]
 
 numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+how_many = input("How long the password must be (max = 30): ")
+how_many = int(how_many)
 
-def input_data():
-    how_many = input("How long the password must be: ")
+if how_many > 30:
+    print("To many characters!")
+elif how_many <= 0:
+    print("You didnt specify the lenght!")
+else:
+    print(how_many)
