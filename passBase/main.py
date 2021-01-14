@@ -1,6 +1,13 @@
 from tkinter import *
 
 
+def show():
+    printLogin = Label(window, text="Login: " +
+                       loginInput.get()).grid(row=4, column=0)
+    printPassword = Label(window, text="Password: " + passwordInput.get()
+                          ).grid(row=4, column=1)
+
+
 # main
 window = Tk()
 window.title("passBase")
@@ -26,7 +33,7 @@ passwordInput = Entry(window)
 passwordInput.grid(row=2, column=2)
 
 # add button
-submitBtn = Button(window, text="Submit")
+submitBtn = Button(window, text="Submit", command=show)
 submitBtn.grid(row=3, column=2)
 
 window.mainloop()
