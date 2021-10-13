@@ -6,15 +6,4 @@ def digital_root(n):
         sumDigit += int(digit)
     res = list(map(int, str(sumDigit)))
 
-
-
-
-
-
-
-
-
-
-
-
 digital_root(942)
