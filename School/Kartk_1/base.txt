@@ -1,0 +1,7 @@
+1 4 6 8 14 89 96 101
+szkola
+123
+1.6
+taniec
+lekcja
+kartkowka
