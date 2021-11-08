@@ -4,7 +4,7 @@
 #3. wypisz wszystkie słowa które mają długość taką jak druga liczba w danej linii w której jest słowo
 #4. wypisz wszystkie liczby które są mniejsze niż wartość liczby podanej jako pierwsza liczba w linii
 #5. podaj te słowa które zawierają dokładnie 2 samogłoski
-
+#Autor: Oliwier Gębczyński 4i
 
 file = open('dane.txt', 'r')
 samogloski = ['a', 'e', 'i', 'o', 'u', 'y']
@@ -19,7 +19,6 @@ def wszystkie_wyrazy(jedna_linia):
             liczby.append(item)
         else:
             wyrazy.append(item)
-
 
 def najwieksza_i_najmniejsza():
     liczby.sort()
@@ -56,7 +55,8 @@ def samogloski_wyrazy(jedna_linia):
                 if letter in samogloski:
                     i += 1
             if i == 2:
-                z_samogloskami.append(item)
+                if item not in z_samogloskami:
+                    z_samogloskami.append(item)
 
 print("Zadanie 1__________________________________________________________")
 for line in file:
@@ -83,7 +83,6 @@ file.seek(0)
 for line in file:
     jedna_linia = line.split()
     samogloski_wyrazy(jedna_linia)
-
 print(f"Slowa z dwoma samogloskami: {z_samogloskami}")
 
 
