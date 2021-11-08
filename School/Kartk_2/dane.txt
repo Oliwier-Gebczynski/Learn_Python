@@ -1,0 +1,4 @@
+234 3 ala ma 445 kota wakacje 3434 lek pilka jagody 5245 48 45
+45  6 onomatopeja 445 kota wakacje 3434 lek pilka jagody 5245 ananas 45
+458 3 ala ma 445 kota wakacje 3434 jagody 5245 48 45
+1 6 ma 445 wakacje 3434 lek jagody 0 48 45
