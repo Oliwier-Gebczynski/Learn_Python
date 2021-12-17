@@ -1,0 +1,31 @@
+body{
+    background-color: #2274A5;
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5%;
+}
+
+.logo{
+    font-size: 30px;
+    color: #F75C03;
+}
+
+.title{
+    font-size: 15px;
+}
+
+.list_element{
+    font-size: 20px;
+    margin-top: 20px
+}
+
+.title, .list_element{
+    color: white;
+}
+
+.link, .link:visited{
+    color: #F75C03;
+}
+
