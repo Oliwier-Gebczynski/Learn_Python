@@ -1,9 +1,14 @@
-body{
-    background-color: #2274A5;
+*{
+    box-sizing: border-box;
     font-family: Arial;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 1200px;
+    height: 600px;
+    background-color: #2274A5;
     padding: 5%;
 }
 
@@ -28,4 +33,3 @@ body{
 .link, .link:visited{
     color: #F75C03;
 }
-

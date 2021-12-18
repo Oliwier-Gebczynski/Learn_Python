@@ -1,13 +1,14 @@
-# TODO
-# - stworzenie pliku html z danymi // ZROBIONE
-# - zapoznanie sie z wysyłaniem email przez python
-# - zrobienie listy email
-# - wysyłanie email za każdym otworzeniem programu
-
 import requests
+import smtplib
 import json
 import apikey
+import email_login
 import datetime
+from email.message import EmailMessage
+
+
+login = email_login.login
+password = email_login.password
 
 def get_data():
     result_list = []
@@ -36,9 +37,11 @@ def get_data():
 
 def create_html(list):
     time = datetime.datetime.now()
+    css = open("html/style.css").read()
     # _________________HEAD___________________
-    html_head = f'<head>  <meta charset="UTF-8"> <link rel="stylesheet" href="style.css"> </head>'
+    html_head = f'<head>  <meta charset="UTF-8"> <style> {css} </style> </head>'
     # ________________BODY___________________
+    html_container = '<div class="container"> '
     html_body = '<body>' # otwarcie znacznika body
     html_logo = f'<h1 class="logo"> ogCode cryptoStats </h1>' # stworzenie logo/nazwy
     html_title = f'<h2 class="title"> Cena kryptowalut z {time.strftime("%x")} </h2>' # stworzenie tytułu
@@ -48,7 +51,8 @@ def create_html(list):
         html_ul += html_li # dodanie elementu do ul
     html_ul += f'</ul>' # domkniecie ul
     html_link = f'<a class="link" href="https://github.com/Oliwier-Gebczynski"> ogCode GitHub </a>'
-    html_body += html_logo + html_title + html_ul + html_link + '</body>'
+    html_container += html_logo + html_title + html_ul + html_link + '</container>'
+    html_body += html_container + '</body>'
     # ________________RESULT__________________
     html = html_head + html_body
     # ________________SAVE FILE_______________
@@ -56,8 +60,19 @@ def create_html(list):
     file.write(html)
     file.close()
 
+def send_email(to, login, password):
+    message = EmailMessage()
+    message['subject'] = "Daily crypto price by ogCode"
+    message['from'] = login
+    message['to'] = to
+    html_message = open("html/index.html").read()
+    message.add_alternative(html_message, subtype = "html")
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.ehlo()
+            smtp.login(login, password)
+            smtp.send_message(message)
+
 create_html(get_data())
-
-
-
+send_email("kolfolly@gmail.com", login, password)
 
