@@ -46,50 +46,28 @@ def to_roman(val):
 
 def from_roman(roman_num):
     result = 0
-    dozens = ""
-    for letter in roman_num:
-        if letter == "M":
-            result += 1000
-            dozens += letter
-        elif letter == "D":
-            result += 500
-            dozens += letter
-        elif letter == "C":
-            result += 100
-            dozens += letter
-        elif letter == "L":
-            result += 50
-            dozens += letter
-        elif letter == "X":
-            result += 10
-            dozens += letter
+    sign_map = {
+        "M": 1000,
+        "D": 500,
+        "C": 100,
+        "L": 50,
+        "X": 10,
+        "V": 5,
+        "I": 1,
+    }
 
-    roman_len = len(roman_num)
-    dozens_len = len(dozens)
-    index = roman_len - dozens_len
+    for index in range(len(roman_num) - 1):
+        first = roman_num[index]
+        second = roman_num[index + 1]
 
-    if roman_num[-index:] == "IX":
-        result += 9
-    elif roman_num[-index:] == "VIII":
-        result += 8
-    elif roman_num[-index:] == "VII":
-        result += 7
-    elif roman_num[-index:] == "VI":
-        result += 6
-    elif roman_num[-index:] == "V":
-        result += 5
-    elif roman_num[-index:] == "IV":
-        result += 4
-    elif roman_num[-index:] == "III":
-        result += 3
-    elif roman_num[-index:] == "II":
-        result += 2
-    elif roman_num[-index:] == "I":
-        result += 1
+        if sign_map[first] < sign_map[second]: # MCMXC
+            result -= sign_map[first]  # 1. -, 2. -, 3.
+        else:
+            result += sign_map[first]  # 1. 1000, 2. 1500,
+        print(result)
 
+    result += sign_map[roman_num[-1]]
     return result
 
-
-
-to_roman(1990) # should return 'M'
-#from_roman('MDCLXVI') # should return 1000
+#to_roman(1990) # should return 'M'
+from_roman('MDCLXVI')
