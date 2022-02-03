@@ -24,7 +24,6 @@ def validate_battlefield(field):
 
     print(shipCell)
 
-
 # jezeli jest =1 sprawdz do okoła czy sa jedynki. Jezeli jest 1 w dół to sprawdzaj tylko kolumne w dół do =0 / przy okazji sprawdz wszystkie komorki czy nie maja po bokach innych jedynek, jesli tak to wyswietl false
 
 
