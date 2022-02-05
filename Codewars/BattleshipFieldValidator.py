@@ -17,10 +17,7 @@ def validate_battlefield(field):
                 shipCell += 1
 
     if shipCell == 20:
-        for i in range(10):
-            for j in range(10):
-                print("do zrobienia ")
-
+        print("Okej")
 
     print(shipCell)
 
