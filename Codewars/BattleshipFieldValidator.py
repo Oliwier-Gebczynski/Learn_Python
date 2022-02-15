@@ -1,3 +1,15 @@
+field = [
+[0, 0, 0, 1, 1, 1, 1, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[0, 1, 1, 0, 0, 1, 0, 0, 0, 1],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+]
 
 def validate_battlefield(field):
     shipCell = 0
@@ -33,6 +45,9 @@ def check_ships(field):
     for i in range(9):
         for j in range(9):
             if field[i][j] == 1:
+                if field[i-1][j] == 0 and field[i+1][j] == 0 and field[i][j-1] == 0 and field[i][j+1] == 0:
+                    field[i][j] = 2
+                    result.append(1)
                 if field[i][j+1] == 1:
                     z = j+1
                     ship = 1
@@ -57,10 +72,9 @@ def check_ships(field):
                         if field[z][j] == 1:
                             ship += 1
                     result.append(ship)
-                if field[i-1][j] == 0 and field[i+1][j] == 0 and field[i][j-1] == 0 and field[i][j+1] == 0:
-                    field[i][j] = 2
-                    result.append(1)
+    print(field)
     result.sort()
+    print(result)
     return result
 
-validate_battlefield(battleField)
+validate_battlefield(field)
