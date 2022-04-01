@@ -38,3 +38,27 @@ for element in podwynik:
         wynik.append(element)
 
 print(wynik)
+
+#zadanie 4.3 do poprawienia
+
+print("zadanie 4.3")
+alfabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+zad3_podwynik = []
+zad3_wynik = []
+for slowo in file_list:
+    dodanie_slowa = [slowo]
+    for i in range(0,len(slowo)-1):
+        if i <= len(slowo)-2:
+            index_slowo0 = alfabet.index(slowo[i])
+            index_slowo1 = alfabet.index(slowo[i+1])
+            roznica = index_slowo1 - index_slowo0
+
+            if roznica >= 10:
+                dodanie_slowa = []
+
+    zad3_podwynik.append(dodanie_slowa)
+
+for element in zad3_podwynik:
+    if element != []:
+        zad3_wynik.append(element)
+
