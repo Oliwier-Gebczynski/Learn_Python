@@ -1,4 +1,5 @@
 from datetime import date
+#start with pandas
 
 cat = """
 |\__/,|   (`)
@@ -10,8 +11,6 @@ cat = """
 kitties = []
 doggos = []
 
-kind = "dog"
-
 # pets calss
 class Cat:
     def __init__(self, name, age, color, date):
@@ -21,14 +20,14 @@ class Cat:
         self.date = date
 
 class Dog:
-    def __init__(self, name, age, color, today):
+    def __init__(self, name, age, color, date):
         self.name = name
         self.age = age
         self.color = color
         self.date = date
 
 #functions
-def newPuppy(name, age, color, today):
+def newPuppy(name, age, color, today, kind):
     if kind == "DOG":
         doggo = Dog(name, age, color, today)
         doggos.append(doggo)
@@ -49,7 +48,7 @@ def main():
         color = input("Color: ")
         today = date.today()
 
-        newPuppy(name, age, color, today)
+        newPuppy(name, age, color, today, kind)
 
     elif (kind != "DOG") or (kind != "CAT"):
         main()
@@ -57,7 +56,9 @@ def main():
 main()
 
 for item in kitties:
-    print(f"{item.name}, {item.age}, {item.colour}, {item.date}")
+    print(f"{item.name}, {item.age}, {item.color}, {item.date}")
+
+
 
 
 
