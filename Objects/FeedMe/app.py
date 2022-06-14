@@ -1,6 +1,9 @@
 from datetime import date
+<<<<<<< HEAD
 import pandas as pd
 
+=======
+>>>>>>> 1c65aa77215a59cb6b4e024f6ede5c6ec9a72cbd
 #start with pandas
 
 cat = """
@@ -27,7 +30,11 @@ class Cat:
         return new_row
 
 class Dog:
+<<<<<<< HEAD
     def __init__(self, name, age, color, date, kind):
+=======
+    def __init__(self, name, age, color, date):
+>>>>>>> 1c65aa77215a59cb6b4e024f6ede5c6ec9a72cbd
         self.name = name
         self.age = age
         self.color = color
@@ -39,7 +46,11 @@ class Dog:
         return new_row
 
 #functions
+<<<<<<< HEAD
 def newPuppy(name, age, color, today, kind, df):
+=======
+def newPuppy(name, age, color, today, kind):
+>>>>>>> 1c65aa77215a59cb6b4e024f6ede5c6ec9a72cbd
     if kind == "DOG":
         doggo = Dog(name, age, color, today, kind)
         database_doggo = doggo.addToDataframe()
@@ -69,11 +80,15 @@ def main():
         color = input("Color: ")
         today = date.today()
 
+<<<<<<< HEAD
         file = newPuppy(name, age, color, today, kind, file)
 
         file.to_csv("database.csv", index=False)
 
         print(file)
+=======
+        newPuppy(name, age, color, today, kind)
+>>>>>>> 1c65aa77215a59cb6b4e024f6ede5c6ec9a72cbd
 
     elif (kind != "DOG") or (kind != "CAT"):
         main()
@@ -82,6 +97,11 @@ def main():
 
 main()
 
+<<<<<<< HEAD
+=======
+for item in kitties:
+    print(f"{item.name}, {item.age}, {item.color}, {item.date}")
+>>>>>>> 1c65aa77215a59cb6b4e024f6ede5c6ec9a72cbd
 
 
 
