@@ -53,10 +53,10 @@ def openFile():
     df = pd.read_csv('database.csv')
     return df
 
-def main():
+def addItem():
     file = openFile()
     kind = input("Type kind of pet(dog or cat): ").upper()
-    
+
     if (kind == "DOG") or (kind == "CAT"):
         name = input("Name: ")
         age = input("Age: ")
@@ -72,7 +72,39 @@ def main():
     elif (kind != "DOG") or (kind != "CAT"):
         main()
 
-    return file
+def removeItem():
+    file = openFile()
+    kind = input("Type kind of pet do you wanna delete (pet or cat): ").upper()
+
+    if kind == "DOG":
+        only_dogs = file[file['kind'] == 'DOG']
+        print(only_dogs)
+        print("  ")
+        id = int(input("Insert dog ID: "))
+        deleted_dog = file.loc[id, 'name']
+        file = file.drop(index=id)
+        print(file[file['kind'] == 'DOG'])
+        print(f"{deleted_dog} has new family!")
+
+    elif kind == "CAT":
+        only_cats = file[file['kind'] == 'CAT']
+        print(only_cats)
+        print("  ")
+        id = int(input("Insert cat ID: "))
+        deleted_cat = file.loc[id, 'name']
+        file = file.drop(index=id)
+        print(f"{deleted_cat} has new family!")
+
+    if file.to_csv("database.csv", index=False):
+        print("File saved!")
+
+def main():
+    type_of_operation = input(f"Choose option:\n 1. Add new puppy!\n 2. Remove puppy :(\n Option: ")
+
+    if type_of_operation == "1":
+        addItem()
+    elif type_of_operation == "2":
+        removeItem()
 
 main()
 
